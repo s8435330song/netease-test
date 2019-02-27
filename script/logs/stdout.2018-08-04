@@ -1,0 +1,134 @@
+argument: key(conf), value(/home/appops/songyang1/rank-netease/conf/rank_site_distribution/conf/)
+argument: key(sDt), value(2018-08-04)
+argument: key(eDt), value(2018-08-04)
+SparkBatch init() configDir=/home/appops/songyang1/rank-netease/conf/rank_site_distribution/conf/
+Initializing spark component...
+Loading spark_component component config from /home/appops/songyang1/rank-netease/conf/rank_site_distribution/conf/spark.conf
+Initializing new spark context with name Rank_rank_site_distribution_algo...
+Use KryoSerializer conf
+This app use spark sql
+ModelBatchComponent init() configDir=/home/appops/songyang1/rank-netease/conf/rank_site_distribution/conf/
+Initializing model component ... 
+Loading model_component component config from /home/appops/songyang1/rank-netease/conf/rank_site_distribution/conf/model.conf
+Starting...
+The App start to run.
+INFO: fetch files from path /user/algo/model/rank_query_songyang1/2018-08-04/*
+sbc rddcontext info serverLogRDD
+Finish set hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00000-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00001-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00002-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00003-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00004-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00005-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00006-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00007-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00008-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet,hdfs://hz-cluster9/user/algo/model/rank_query_songyang1/2018-08-04/part-r-00009-e3dda594-9ae0-45f5-a088-9fc07e7e2e10.snappy.parquet to serverLogRDD RDD format parquet
+root
+ |-- rid: string (nullable = true)
+ |-- platform: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- exp_ids: string (nullable = true)
+ |-- location_count: integer (nullable = true)
+ |-- diversity_type: string (nullable = true)
+ |-- latency: long (nullable = true)
+ |-- request_time: long (nullable = true)
+ |-- response_time: long (nullable = true)
+ |-- total_ids_count: integer (nullable = true)
+ |-- unique_ids_count: integer (nullable = true)
+ |-- truncate_flag: string (nullable = true)
+ |-- truncate_account: string (nullable = true)
+ |-- truncate_plan: string (nullable = true)
+ |-- exp_layers: string (nullable = true)
+ |-- processors: string (nullable = true)
+ |-- process_time: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: integer (valueContainsNull = true)
+ |-- ad_num: integer (nullable = true)
+ |-- parse: integer (nullable = true)
+ |-- make: integer (nullable = true)
+ |-- ext: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: string (valueContainsNull = true)
+ |-- host: string (nullable = true)
+ |-- time: long (nullable = true)
+
+2018-08-04
+all query count********************************************
+247701116
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!the overall part is incoming!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+****************************0000000000000000000000000000000*********************************
+(1 location_count) all #0********************************************
+173701182
+(1 location_count)uniqid_count is 1#0********************************************
+20922219
+(1 location_count)uniqid_count #0********************************************
+152778963
+(more location_count)uniqid_count is 1#0********************************************
+2473623
+(more location_count)uniqid_count less than location_count#0********************************************
+7978363
+(more location_count)uniqid_count equal to location_count#0********************************************
+1961911
+(more location_count)uniqid_count more than location_count#0********************************************
+64059660
+(more location_count)uniqid_count 2 times than  location_count#0********************************************
+55091337
+old aglo rate#0********************************************
+[1,0.933828752357575]
+
+
+
+****************************1111111111111111111111111111111*********************************
+(1 location_count) all #1********************************************
+123765202
+(1 location_count)uniqid_count is 1#1********************************************
+5641311
+(1 location_count)uniqid_count #1********************************************
+118123891
+(more location_count)uniqid_count is 1#1********************************************
+811476
+(more location_count)uniqid_count less than location_count#1********************************************
+5560073
+(more location_count)uniqid_count equal to location_count#1********************************************
+600901
+(more location_count)uniqid_count more than location_count#1********************************************
+39736307
+(more location_count)uniqid_count 2 times than  location_count#1********************************************
+33504373
+old aglo rate#1********************************************
+[1,0.9145622912241566]
+
+
+
+****************************2222222222222222222222222222222*********************************
+(1 location_count) all #2********************************************
+24340262
+(1 location_count)uniqid_count is 1#2********************************************
+1507448
+(1 location_count)uniqid_count #2********************************************
+22832814
+(more location_count)uniqid_count is 1#2********************************************
+1652429
+(more location_count)uniqid_count less than location_count#2********************************************
+2334123
+(more location_count)uniqid_count equal to location_count#2********************************************
+1334987
+(more location_count)uniqid_count more than location_count#2********************************************
+23567679
+(more location_count)uniqid_count 2 times than  location_count#2********************************************
+21042030
+old aglo rate#2********************************************
+[1,0.9658991513420963]
+****************************10101010101010101010101010101010*********************************
+(1 location_count) all #10********************************************
+136744
+(1 location_count)uniqid_count is 1#10********************************************
+21539
+(1 location_count)uniqid_count #10********************************************
+115205
+(more location_count)uniqid_count is 1#10********************************************
+1062
+(more location_count)uniqid_count less than location_count#10********************************************
+31637
+(more location_count)uniqid_count equal to location_count#10********************************************
+2864
+(more location_count)uniqid_count more than location_count#10********************************************
+124684
+(more location_count)uniqid_count 2 times than  location_count#10********************************************
+73716
+old aglo rate#10********************************************
+[1,0.8298440587073108]
+All process is finish !

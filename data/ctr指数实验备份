@@ -1,0 +1,123 @@
+diversion_type = "UID";
+hash_base = 10000;
+
+exp_list = (
+    {
+        name = "exp_rank_ecpm_base19";
+        owner = "wanghaiqiang";
+        description = "0";
+        bucket_flow = 500;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.1";
+            ecpm_factor = "factor_ecpm_rank_test3";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    },
+    {
+        name = "exp_rank_ecpm_test19";
+        owner = "wanghaiqiang";
+        description = "0";
+        bucket_flow = 500;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.0";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    },
+    {
+        name = "exp_rank_ecpm_base21";
+        owner = "wanghaiqiang";
+        description = "0";
+        bucket_flow = 1000;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.1";
+            ecpm_factor = "factor_ecpm_rank_test3";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    },
+    {
+        name = "exp_rank_ecpm_test21";
+        owner = "wanghaiqiang";
+        description = "0";
+        bucket_flow = 1000;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.1";
+            ecpm_factor = "factor_ecpm_rank_test4";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    },
+    {
+        name = "exp_rank_ecpm_base22";
+        owner = "wanghaiqiang";
+        description = "0";
+        bucket_flow = 500;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.1";
+            ecpm_factor = "factor_ecpm_rank_test3";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    },
+    {
+        name = "exp_rank_ecpm_test22";
+        owner = "wanghaiqiang";
+        description = "0";
+        bucket_flow = 500;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.1";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    },
+
+    {
+        name = "exp_rank_ecpm_defualt";
+        owner = "lilonghua";
+        description = "0";
+        bucket_flow = 6000;
+        bound_layers = "";
+        conditions = {
+            platform = "\d+";
+        };
+        params = {
+            bid_pow_weight = "1.0";
+            ctr_pow_weight = "1.1";
+            ecpm_factor = "factor_ecpm_rank_test3";
+            cpm_gamma = "0.65";
+            enable_split_cpm_cpc = "true";
+        };
+    }
+);

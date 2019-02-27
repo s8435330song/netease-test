@@ -1,0 +1,330 @@
+argument: key(conf), value(/home/appops/songyang1/rank-netease/conf/rank_query_osappv/conf/)
+argument: key(sDt), value(2018-11-10)
+argument: key(eDt), value(2018-11-10)
+SparkBatch init() configDir=/home/appops/songyang1/rank-netease/conf/rank_query_osappv/conf/
+Initializing spark component...
+Loading spark_component component config from /home/appops/songyang1/rank-netease/conf/rank_query_osappv/conf/spark.conf
+Initializing new spark context with name Rank_rank_query_osappv_algo...
+Use KryoSerializer conf
+This app use spark sql
+ModelBatchComponent init() configDir=/home/appops/songyang1/rank-netease/conf/rank_query_osappv/conf/
+Initializing model component ... 
+Loading model_component component config from /home/appops/songyang1/rank-netease/conf/rank_query_osappv/conf/model.conf
+Starting...
+The App start to run.
+INFO: fetch files from path /datastream/algo/rankserver/log/server/2018-11-10/*
+sbc rddcontext info serverLogRDD
+Finish set hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000014+0800.73562935036386641.00000373-1692878463--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000016+0800.17206505295765752.00000449-976989730--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000036+0800.52322764434590375.00001573-1786723613--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000037+0800.74741375751665431.00000666-1821961182--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000052+0800.53521072099026821.00001545-1528558175--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000054+0800.52322695836361049.00000205-1915806332--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000102+0800.53520498128848420.00000725-1270392737--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000113+0800.53521018271654322.00000475-1141310018--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000122+0800.17206557021886017.00000266-1106072449--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-10/ad_pangu_rankserver_server_20181110-000000158+0800.53520998296458321.00000380-1399475456--1193959466.lzo to serverLogRDD RDD with lzo format
+root
+ |-- rid: string (nullable = true)
+ |-- platform: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- exp_ids: string (nullable = true)
+ |-- location_count: integer (nullable = false)
+ |-- diversity_type: string (nullable = true)
+ |-- latency: long (nullable = false)
+ |-- request_time: long (nullable = false)
+ |-- response_time: long (nullable = false)
+ |-- total_ids_count: integer (nullable = false)
+ |-- unique_ids_count: integer (nullable = false)
+ |-- truncate_flag: string (nullable = true)
+ |-- truncate_account: string (nullable = true)
+ |-- truncate_plan: string (nullable = true)
+ |-- exp_layers: string (nullable = true)
+ |-- processors: string (nullable = true)
+ |-- process_time: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: integer (valueContainsNull = false)
+ |-- ad_num: integer (nullable = false)
+ |-- parse: integer (nullable = false)
+ |-- make: integer (nullable = false)
+ |-- ext: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: string (valueContainsNull = true)
+ |-- host: string (nullable = true)
+ |-- time: long (nullable = false)
+
+root
+ |-- rid: string (nullable = true)
+ |-- platform: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- request_time: string (nullable = true)
+ |-- os: string (nullable = true)
+ |-- appv: string (nullable = true)
+
+root
+ |-- rid: string (nullable = true)
+ |-- platform: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- request_time: string (nullable = true)
+ |-- size: string (nullable = true)
+ |-- location: string (nullable = true)
+
+os
+[null,27]
+[2,24080250]
+[1,19607659]
+[3,11840546]
+[5,600020]
+appv
+[28.1,21709]
+[CQliYTg4M2NjY2M1ZGQ0NWE4CU44SzAyMTc1MTYwMDEyMTA%3D,1]
+[5.3.0,1304]
+[5.1.2,2]
+[3.3.4,6]
+[CQk2OTIzN2ZlMjRjZTI3YmExCTQzNzExOWJlN2Q3NA%3D%3D,1]
+[6.5.7.1250,149]
+[34.5,2595]
+[41.0,304042]
+[6.0.5.1120,43]
+[null,27]
+[5.5.3,2]
+[5.1.6,33]
+[4.3.0,3]
+[21.0,7428]
+[19.4,13]
+[CQlmNGE5OTllNWUxYTI4OTYwCTAxMjM0NTY3ODlBQkNERUY%3D,1]
+[6.1.1.1143,13]
+[40.0,269718]
+[CQkyM2FlYTAxOTUyZjYzNWY2CTRMUk9MTkFJTkZGUU1WSVI%3D,1]
+[CQllMWUxZjdmZGNjNzA4YzgzCTljNWU4MGM%3D,5]
+[CQliZjEwOTg1MjgwZWU2MWQ3CThCTjAyMTc2MjQwMDc2Njc%3D,1]
+[CQkxZTRhY2JhM2JjZmI5Y2E1CUxFWTdBMDcwMjAwMjEwNTU%3D,2]
+[3.8.6,74]
+[3.8.7,5302]
+[5.6.1.1062,35]
+[4.1.5,8]
+[3.5,64]
+[5.5.0,454]
+[5.5.3.1050,51]
+[6.9.1/147,8]
+[CQkyYjFjY2Q1YmEyMTllZTNhCVM0WERVMTY4MTQwMTE2MTg%3D,2]
+[35.0,4225]
+[5.4.3,3487]
+[5.4.4,554]
+[5.1.5,20]
+[0.0.0,26314]
+[34.1.1,37505]
+[5.4.5,286]
+[5.4.7,1732]
+[20.0,1770]
+[29.1,181824]
+[3.6,21]
+[37.2,327634]
+[CQk3YjI3NjAxYThmMmI3MTA4CUZERzZUMTZCMTYwMDQ1OTI%3D,9]
+[CQk1M2Q5ZDU0YTEwMTJiZmE2CWNkYjVkYzM0,1]
+[3.8.2,70]
+[24.0,15678]
+[3.7,35]
+[22.2,59]
+[6.7.1/143,181]
+[31.0,141756]
+[6.6.8.8,213]
+[4.0.3,27]
+[30.1.0,5]
+[,439324]
+[6.5.8/141,29]
+[20.1,10070]
+[38.0,264621]
+[5.0.6,37]
+[5.5.2.1041,63]
+[35.1,293595]
+[6.5.2/137,23]
+[5.1.1,4]
+[3.7.1,5]
+[33.1,296251]
+[6.0.3.1100,61]
+[6.0.6.1127,61]
+[33.2.1,79775]
+[6.1.2.1145,178]
+[5.4.2,1258]
+[5.1.0,2]
+[CQk2MDQ5YmM4ZWNkZjg1MWJjCU1RTTlYMTgzMjVDMTk5ODc%3D,6]
+[CQlhMTBkNmJjODk0MjVjYTdiCUNYRDdOMTc0MTAwMDUxODI%3D,3]
+[4.1.1,4]
+[6.8.3.1303,384]
+[QQ_news_CPD1,2]
+[4.5.0,7]
+[23.0,14650]
+[48.0,4]
+[3.8.0,216]
+[huawei_news,3]
+[5.0.5,5]
+[39.0,136153]
+[33.3,3481]
+[6.0.2/127,17]
+[CQk4OGYwNDI4YzA5NThjM2M3CVNPRElGVUhVVjhMUk1WTk4%3D,1]
+[CQk0YzUwM2U2NjczZjBkMmI4CTIwNWI3YmU4,1]
+[4.0.2,1]
+[9.9.9.9,2]
+[5.4.6,56]
+[6.8.3/146,259]
+[22.0,6664]
+[CQk0ZjdlMzZjZDc5MzkyZjYyCTNlMWY5N2U1,1]
+[24.1,37846]
+[6.3.1.1177,316]
+[6.5.1/136,3]
+[28.2,124526]
+[33.2,581261]
+[19.3,1]
+[26.1,69757]
+[6.8.1/144,4]
+[43.1,1130214]
+[CQk0OWUxYjQ5OGNlN2Y5YTEzCThIR1lSQzhUVktaVEpaVVc%3D,1]
+[5.0.2,12]
+[CQlkMzU1OTZlYjMyZmNiNGY0CTZkMGUwYWE%3D,1]
+[CQliMWYyM2JlNzVhNmNlNGJkCVZHOEhQVlZTQVlMUjU5QzY%3D,1]
+[44.0,572822]
+[3.8.5,293]
+[5.2.7,247]
+[23.1,12399]
+[31.2,42686]
+[CQlmNTYxMzdiNDk0ZWJjMDIJMzg0OTA5MzE%3D,2]
+[3.8.4,13]
+[5.2.1,20]
+[39.1,97766]
+[1.0,22909446]
+[45.0,874021]
+[5.5.1,1736]
+[CQk3YjJhOWM5ZWI2MTE2ZDc5CTVFRjdOMTgxMTUwMDMyMjc%3D,5]
+[6.9.1.1314,20052]
+[28.0,39365]
+[CQkyZGE0Y2U3MTliN2Q5ZTkyCUhNS05XMTc4MTgwMDAxMTI%3D,1]
+[37.1,57152]
+[baidu_cpd1_news,26]
+[29.1.0,1210]
+[3.2,69]
+[41.0.0,1498]
+[6.0.5/130,18]
+[5.2.5,259]
+[25.0.0,29]
+[36.0,127762]
+[25.1,17113]
+[5.2.0,10]
+[33.3.0,17]
+[45.1,11988359]
+[46.0,1282494]
+[22.1,31533]
+[5.1.3,40]
+[34.1,24382]
+[CQk1NGM2MDAwNjZkNWZiMTVlCTNVUUJCMTc5MTk1MTcwNjQ%3D,1]
+[999.9,9]
+[28.2.0,403]
+[25.1.0,779]
+[CQkxZjM4MzQwNTczN2I2OWFmCVlUUU5XMTc5MTYwMTEyNjE%3D,1]
+[3.8.1,117]
+[5.2.6,23]
+[21.1,21]
+[6.8.1.1292,345]
+[CQk5NDZjMzc0ZmI3Y2Q2Y2U4CTI4MmViMDFk,2]
+[CQk5YzgzZWJhYmM1OWJhMDc2CWU4MzNhYjBi,1]
+[6.2.1.1162,117]
+[32.1,50485]
+[6.5.4/139,2]
+[6.5.7/140,3]
+[6.0.3/128,1]
+[5.7.3.1086,176]
+[CQk5MjA3ODhmNjYwZmVkOTc3CTlZSjdOMTc0MjkwMDE1MjI%3D,2]
+[26.1.0,21]
+[5.2.9,377]
+[27.0,69934]
+[CQljMTA5YjIxN2M1NWU0YzMwCWUyZTdhODdk,1]
+[47.0,202218]
+[6.1.1/131,37]
+[5.2.8,357]
+[CQlkZDM5Yzk4ZDAwZGY5YjQ2CUhNS05XMTc0MjEwNTExODg%3D,4]
+[CQk5NmE1NTFmOTBhZDk5YmRlCVRQRTlYMTg3MTBXMTIyNDU%3D,1]
+[34.0,178795]
+[CQkxMGViNjdhZDdhYmE3ZDEwCTliNjU1Mjhh,2]
+[6.4.1.1188,240]
+[CQkwMWFkNTI4ZTMzMjVlMzM2CVNOTUJCMTg3Mjc1MDA3Njg%3D,3]
+[5.2.3,64]
+[19.1,29]
+[5.4.1,970]
+[5.7.3/125,40]
+[26.2.0,205]
+[25.0,53847]
+[6.5.3.1210,247]
+[CQk3YmU1NWViODI3YTlhN2MwCTQxZjljYTJi,2]
+[CQk2YTBmMWY0ZGM2ZjU3YTRkCTEyMmY1YTUw,2]
+[5.5.5,25174]
+[29.0,7128]
+[CQliZTM1NTlmZWMzNGVjNjczCUcyVzAyMTU4MDgwMDE1MTk%3D,5]
+[CQlkMmE2NjM1Njk5MzE4YWMxCUZGS0RVMTczMjIwMDk1NjQ%3D,1]
+[CQk0YjVhMGFjNjY2MGI2ODBjCUZGSzAyMTc5MDQwMDA5OTA%3D,2]
+[28.1.0,338]
+[26.0,4394]
+[CQliY2VhMWIyYzE4ODZmYTY4CVNKRTAyMTgxMTIwMTA3Njc%3D,1]
+[4.6.1,2]
+[6.0.4/129,1]
+[20.2,19]
+[30.0,367]
+[42.0,385346]
+[CQliNjZmMzBjYzVjMDRiMjc2CWM4NGJhYWI3,1]
+[20.1.0,108]
+[30.1,109815]
+[6.8.4.1305,245]
+[CQk5NDAwOTFhZDczNjE1NjZlCWU0MmYwOTdl,7]
+[4.1.3,3]
+[5.2.2,101]
+[6.9.3/149,9107]
+[5.0.1,19]
+[19.0,33]
+[40.1,58053]
+[CQk2YWMxZjJmMzdlODcyZjAJOTg4YjFhMzk0ZDMzNTE0OTUz,1]
+[22.3,40945]
+[CQlmY2JjYWU3YzE4Y2ZmMjRkCVdKWDdOMTdBMzAwMDA3NDY%3D,2]
+[46.1,10219631]
+[30.2.0,29]
+[32.0,59927]
+[CQk5Yzc4ZjJlYzA5YmNhZGMJY2QyMGRlMzY%3D,6]
+[4.6.0,6]
+[33.0,52589]
+[19.2,10]
+[27.0.0,371]
+[43.0,1392266]
+[6.4.1/134,75]
+[35.1.0,509]
+[6.5.3/138,117]
+[3.8.3,79]
+[6.7.1.1276,488]
+[23.2,48637]
+[CQlhZWMxMDAxZDZhYzY5YjgwCTcwNGZjNDE1,1]
+[6.6.1/142,256]
+[24.3,14010]
+[5.6.2.1071,49]
+[5.7.2/124,7]
+[6.8.1/145,4424]
+[CQk0MjNjMzYxNzY5YTRkNDhiCTU0NWI0YTRl,1]
+[31.1,15]
+[6.6.1.1260,443]
+[26.2,18939]
+[6.2.1/132,242]
+[6.3.1/133,80]
+[CQk0NTk5YTRhZDY4YTYzODNjCVFEWTRDMTc3MTcwMDQwNTQ%3D,5]
+[5.5.4,377]
+[5.7.1.1077,47]
+[CQk4NTJhY2NjOGQxM2U5NTg3CTY4VTVUMTdBMjQwMDgyNDE%3D,12]
+[5.5.3/115,31]
+[6.9.2/148,230]
+[5.4.0,179]
+[34.2,85531]
+[5.5.2,2467]
+[CQlmYmYyYTZhZDk4MjEwYTQ2CUhYSk5XMTdBMjEwNDAxOTQ%3D,1]
+[4.4.0,7]
+[miliao_news,1]
+[24.2,12949]
+[37.0,52418]
+[CQlhNmVmMWEyZThhYjM0MWYyCTE0YjNhMTIy,1]
+[5.7.2.1084,17]
+[CQk4MTUxNWIyOTU0M2YyMGQ5CTMzZWJlNGRi,1]
+[5.4.8,9279]
+[6.5.1.1202,72]
+location
+[null,56128502]
+size
+[null,56128502]
+bigger 
+[null,null,48167148]
+Filter stat join query count is 56128502
+All process is finish !

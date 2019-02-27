@@ -1,0 +1,79 @@
+argument: key(conf), value(/home/appops/songyang1/rank-netease/conf/rank_query_analysis/conf/)
+argument: key(sDt), value(2018-11-13)
+argument: key(eDt), value(2018-11-13)
+SparkBatch init() configDir=/home/appops/songyang1/rank-netease/conf/rank_query_analysis/conf/
+Initializing spark component...
+Loading spark_component component config from /home/appops/songyang1/rank-netease/conf/rank_query_analysis/conf/spark.conf
+Initializing new spark context with name Rank_rank_query_analysis_algo...
+Use KryoSerializer conf
+This app use spark sql
+ModelBatchComponent init() configDir=/home/appops/songyang1/rank-netease/conf/rank_query_analysis/conf/
+Initializing model component ... 
+Loading model_component component config from /home/appops/songyang1/rank-netease/conf/rank_query_analysis/conf/model.conf
+Starting...
+The App start to run.
+INFO: fetch files from path /datastream/algo/rankserver/log/server/2018-11-13/*
+sbc rddcontext info serverLogRDD
+Finish set hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000017+0800.17465745510717885.00000584-1235155168--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000036+0800.18018559430676816.00000283--2024097861--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000102+0800.53779696373743666.00000725-1270392737--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000104+0800.17465755890902789.00000266-1106072449--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000107+0800.52581895552165333.00000204-2044889051--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000183+0800.73822133759133003.00000373-1692878463--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000330+0800.52581894329601674.00000205-1915806332--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000536+0800.53780196489031833.00000380-1399475456--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000738+0800.53780216403441278.00000475-1141310018--1193959466.lzo,hdfs://hz-cluster9/datastream/algo/rankserver/log/server/2018-11-13/ad_pangu_rankserver_server_20181113-000000815+0800.18018548924144137.00000175-2141786716--1193959466.lzo to serverLogRDD RDD with lzo format
+This app filter hour is 18
+root
+ |-- rid: string (nullable = true)
+ |-- platform: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- exp_ids: string (nullable = true)
+ |-- location_count: integer (nullable = false)
+ |-- diversity_type: string (nullable = true)
+ |-- latency: long (nullable = false)
+ |-- request_time: long (nullable = false)
+ |-- response_time: long (nullable = false)
+ |-- total_ids_count: integer (nullable = false)
+ |-- unique_ids_count: integer (nullable = false)
+ |-- truncate_flag: string (nullable = true)
+ |-- truncate_account: string (nullable = true)
+ |-- truncate_plan: string (nullable = true)
+ |-- exp_layers: string (nullable = true)
+ |-- processors: string (nullable = true)
+ |-- process_time: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: integer (valueContainsNull = false)
+ |-- ad_num: integer (nullable = false)
+ |-- parse: integer (nullable = false)
+ |-- make: integer (nullable = false)
+ |-- ext: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: string (valueContainsNull = true)
+ |-- host: string (nullable = true)
+ |-- time: long (nullable = false)
+
+root
+ |-- rid: string (nullable = true)
+ |-- platform: string (nullable = true)
+ |-- category: string (nullable = true)
+ |-- appVersion: string (nullable = true)
+ |-- host: string (nullable = true)
+ |-- time: long (nullable = false)
+ |-- stats: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: struct (valueContainsNull = true)
+ |    |    |-- image: integer (nullable = false)
+ |    |    |-- title: integer (nullable = false)
+ |    |    |-- video: integer (nullable = false)
+ |    |    |-- plan: integer (nullable = false)
+ |    |    |-- account: integer (nullable = false)
+ |    |    |-- truncate: integer (nullable = false)
+ |    |    |-- invalid_ecpm: integer (nullable = false)
+ |    |    |-- win: integer (nullable = false)
+ |    |    |-- nfl: integer (nullable = false)
+ |    |    |-- pml: integer (nullable = false)
+ |    |    |-- uniq_id: integer (nullable = false)
+ |    |    |-- size: integer (nullable = false)
+ |    |    |-- ext: map (nullable = true)
+ |    |    |    |-- key: string
+ |    |    |    |-- value: string (valueContainsNull = true)
+ |-- ext: map (nullable = true)
+ |    |-- key: string
+ |    |-- value: string (valueContainsNull = true)
+
+The query timeout max is 100
+All query count:51107723	timeout count:1490	random count:2060	no result count:570
+All process is finish !
