@@ -1,0 +1,14 @@
+find new_cvr_analysis/ -name "part*" |grep account|sort |xargs grep 19623,2,exp_cvr_base10 |awk -F '/' '{print $2}'
+
+find new_cvr_analysis_songyang3/ -name "part*" |grep total|sort |xargs grep cvr_merge_exp4 |awk -F '/' '{print $2}'
+find new_cvr_analysis_songyang3/ -name "part*" |grep total|sort |xargs cat | grep cvr_merge_exp4 
+find new_cvr_analysis_songyang3/ -name "part*" |grep total|sort |xargs cat | grep cvr_merge_nomerge_base4
+
+
+find new_cvr_analysis_songyang3/ -name "part*" |grep account|sort |xargs cat | grep cvr_merge_nomerge_base4 |grep 18916
+find new_cvr_analysis_songyang3/ -name "part*" |grep account|sort |xargs cat | grep cvr_merge_exp4 |grep 18916
+
+
+appops@paramserver2:~/app/logs$ hadoop fs -put rankserver.log.2018-12-27-07.lzo /user/algo/songyang1/serverLog/2018-12-01
+appops@paramserver2:~/app/logs$ hadoop fs -put rankserver.log.2018-12-27-08.lzo /user/algo/songyang1/serverLog/2018-12-02 &
+appops@paramserver2:~/app/logs$ hadoop fs -put rankserver.log.2018-12-27-09.lzo /user/algo/songyang1/serverLog/2018-12-03 &

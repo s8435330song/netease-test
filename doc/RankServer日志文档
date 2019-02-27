@@ -1,0 +1,164 @@
+RankServer日志文档
+
+feature特征日志
+请求日志
+query请求日志
+
+
+update:
+2018-12-20 升级日志文档
+
+rankserver包含以下几种日志：
+Feature日志：/datastream/algo/rankserver/log/feature/
+rankserver 请求日志 /datastream/algo/rankserver/log/server/
+rankserver query_info信息日志：/datastream/algo/rankserver/query_info/
+rankserver ps2上传的原始请求日志/user/algo/rankserver/request/
+
+下面重点描述rankserver中比较重要的日子格式：
+- feature特征日志
+- query请求日志
+- query_result日志（广告位胜出日志）
+- query_info日志
+- FILTER_STAT日志：过滤日志
+
+feature特征日志
+特征日志输出在logs/feature.log中，包含两种格式的特征日志：CVR_FEATURE和 FEATURE，依次代表CVR特征和CTR特征。格式为：
+request_id\tlocatiion\trequestTime\tmodel_id\tfeature_field1空格feature_field2空格feature_field3空格 ...... feature_fieldn
+详见特征日志的wiki: http://doc.ws.netease.com/pages/viewpage.action?pageId=10158853
+
+query_info日志
+rankserver收到引擎的query请求时，输出请求日志，日志输出于logs/rankserver.log中
+格式为：
+[QUERY_INFO] json格式的日志
+json格式如下：
+{
+    "rid": "123456",
+    "request_time": 123456,
+    "dmp": {
+        "age": 1,
+        "sex": 1,
+        "age_range": "",
+        "interests": [
+            {
+                "id": "123456",
+                "weight": 0.6
+            },
+            {
+                "id": "123459",
+                "weight": 0.5
+            }
+        ]
+    }
+}
+字段说明：
+
+字段名称
+字段类型
+字段说明
+默认值
+rid
+string
+请求id
+NA
+request_time
+int64
+请求时间戳(秒)
+NA
+dmp.age
+int
+年龄
+0
+dmp.sex
+int
+性别
+0
+dmp.age_range
+string
+年龄区间
+空
+dmp.interests.id
+string
+兴趣id
+空
+dmp.interests.weight
+double
+兴趣权重
+0.0
+
+示例：
+2018-12-20 10:46:55,558 [INFO] [0x7f6130397700] - [QUERY_RESULT] rid:b2d8d4fae5b8403996263882755a3bc2 platform:1 category:T1348648756099 exp_name:rank_base;pre_process_default;newad_mark_default;ctr_trunc_0601;ctr_user_profile1;tf_session_dnn;exp_cvr_default;newad_thompson_base11;exp_rank_ecpm_defualt;cvr_merge_default;ecpm_truncate_default;diversity_refactor_default;default;diversity_default;charge_default;winprice_noadjust_base,winprice_adjust_base13;nfl_exp;rank_common_domain location:28 scheduling_id:498697 account_id:18882 idea_id:794083 idea_type:2 bid:142000 ctr:7351 rank_ctr:0.007351 orig_ctr:0.007351 ecpm:1043842 rank_ecpm:638692 ecpm2_id:790290 ecpm2:945440 flag:0 adjust_price_flag:0 random:0 win_price:128749 new_win_price:128749 w:-4.170306 pw:-3.319526 lw:-0.199527 factor_wp_ratio:0.000000 wp_ratio:0.906683 new_wp_ratio:0.906683 cvr:0.000000 market:1 cast_way:1 i:8 size:83 rank_ecpm2:606584 ori_ecpm2:945440 lr_ctr:0.007351 tf_ctr:0.000000 ctr_source:0 uid:A29A6985-AF3E-479F-8A81-C37E7B7F2849 cache_flag:0
+
+query请求日志
+服务日志为rankserver内部debug所输出的日志，日志输出于logs/rankserver.log
+线上日志级别定义为INFO，代码内部需要及时去掉不需要的debug日志，日志大量输出影响query耗时。
+字段说明：
+
+字段名称
+字段类型
+字段说明
+默认值
+rid
+string
+请求id
+NA
+uid
+string
+用户id
+NA
+exp_ids
+string
+请求命中的实验id列表
+空
+latency
+int
+请求耗时
+0
+request_time
+long
+接收到请求时的时间戳
+0
+response_time
+long
+完成请求时的时间戳
+0
+location_count
+int
+流量中的location个数
+0
+total_ids_count
+int
+流量中的所有广告数目
+0
+unique_ids_count
+int
+去重后的广告数据
+0
+
+ecpm2_idea_id：第二高价对应
+i: 排序选中广告的索引号（从0开始）
+size: 候选队列广告总数
+
+示例：
+2018-12-20 10:45:32,426 [INFO] [0x7f60f34fb700] - [QUERY] request_expire:0 rid:968c15e909e147cbb7cdb39b52e35d22 uid:868064032203033 platform:1 exp_ids:rank_base;pre_process_default;ctr_detail_default;tf_ol_exp;newad_thompson_default;exp_rank_ecpm_defualt;ecpm_truncate_default;diversity_refactor_default;diversity_default;charge_default;winprice_adjust_default13;nfl_exp;detail_domain diversity_type:0 latency:3 request_time:1545273932423 response_time:1545273932426 location_count:1 total_ids_count:51 unique_ids_count:51 truncate_flag: truncate_account:0 truncate_plan:0 exp_layers:pre_process,ctr_detail,rearranger,newad_boost,rank_ecpm,ecpm_truncate,diversity_refactor,diversity,charge,winprice category:FOCUS2 processors:check_processor,preprocess_processor,multi_rank_processor,generate_task_ctr2_hour_0,generate_parellel_ctr2_hour,lr_model_ctr2_hour,tf_model_tfmodel6,rank_processor,boost_processor,rank_ecpm_processor,diversity_processor,model,charge_processor process_time:total=2,check_processor=0,preprocess_processor=0,multi_rank_processor=0,generate_task_ctr2_hour_0=0,generate_parellel_ctr2_hour=0,lr_model_ctr2_hour=1,tf_model_tfmodel6=0,rank_processor=1,boost_processor=0,rank_ecpm_processor=0,diversity_processor=1,model=0,charge_processor=0 ad_num:1 parse:1 make:0 stat:0 locations:4 filling:4,1;
+
+FILTER_STAT日志
+日志按照#区分，第一日志段为基本数据，后续各个location广告过滤记录（未按照location排序）。
+说明：广告位填充失败说明location size大小=过滤策略总和
+
+字段含义如下（第一列数字代表日志列号）：
+关键字：FILTER_STAT
+ver: 客户端版本信息
+11 image： 图片去重过滤广告数
+12 title： 标题过滤广告数
+13 video：视频过滤广告数
+14 plan：同投放计划（plan）过滤广告数
+15 account: 同广告主过滤广告数
+16 truncate：ecpm/ctr截断过滤广告数
+17 invalid_ecpm：无效ecpm过滤广告数
+18 win：已胜出广告id相同过滤广告数
+19 neg_feedback: 负反馈过滤广告数
+20 size: 候选队列广告总数
+pml: 初选过滤广告总数
+uniq_id：最大uniq_id广告数截断广告数
+
+[FILTER_STAT] rid:1icdo8TWJxfu73woweaW02bTKyvu12f4 platform:1 category:FOCUS2 ver: #location:20 image:0 title:1 video:0 plan:16 account:0 truncate:0 invalid_ecpm:0 win:8 nfl:0 size:1000 pml:800 uniq_id:1000#location:19 image:0 title:3 video:0 plan:12 account:0 truncate:0 invalid_ecpm:0 win:7 nfl:0 size:1000 pml:800 uniq_id:1000#location:18 image:0 title:0 video:0 plan:20 account:0 truncate:0 invalid_ecpm:0 win:8 nfl:0 size:1000 pml:800 uniq_id:1000#location:17 image:0 title:3 video:2 plan:17 account:0 truncate:0 invalid_ecpm:0 win:11 nfl:0 size:1000 pml:800 uniq_id:1000#location:6 image:0 title:0 video:0 plan:1 account:0 truncate:0 invalid_ecpm:0 win:1 nfl:0 size:1000 pml:800 uniq_id:951#location:5 image:0 title:0 video:0 plan:2 account:0 truncate:0 invalid_ecpm:0 win:3 nfl:0 size:1000 pml:800 uniq_id:936#location:4 image:0 title:0 video:0 plan:5 account:0 truncate:0 invalid_ecpm:0 win:0 nfl:0 size:1000 pml:800 uniq_id:881#location:3 image:0 title:0 video:0 plan:0 account:0 truncate:0 invalid_ecpm:0 win:0 nfl:0 size:1000 pml:800 uniq_id:763#location:1 image:0 title:0 video:0 plan:0 account:0 truncate:0 invalid_ecpm:0 win:0 nfl:0 size:1000 pml:800 uniq_id:259#location:2 image:0 title:0 video:0 plan:0 account:0 truncate:0 invalid_ecpm:0 win:0 nfl:0 size:1000 pml:800 uniq_id:559#location:7 image:0 title:0 video:0 plan:9 account:0 truncate:0 invalid_ecpm:0 win:5 nfl:0 size:1000 pml:800 uniq_id:977#location:8 image:0 title:0 video:0 plan:6 account:0 truncate:0 invalid_ecpm:0 win:3 nfl:0 size:1000 pml:800 uniq_id:990#location:9 image:0 title:0 video:6 plan:11 account:0 truncate:0 invalid_ecpm:0 win:4 nfl:0 size:1000 pml:800 uniq_id:986#location:10 image:0 title:0 video:0 plan:9 account:0 truncate:0 invalid_ecpm:0 win:3 nfl:0 size:1000 pml:800 uniq_id:996#location:11 image:0 title:0 video:5 plan:5 account:0 truncate:0 invalid_ecpm:0 win:4 nfl:0 size:1000 pml:800 uniq_id:999#location:12 image:0 title:0 video:0 plan:1 account:0 truncate:0 invalid_ecpm:0 win:2 nfl:0 size:1000 pml:800 uniq_id:999#location:13 image:0 title:0 video:3 plan:19 account:0 truncate:0 invalid_ecpm:0 win:9 nfl:0 size:1000 pml:800 uniq_id:1000#location:14 image:0 title:0 video:0 plan:14 account:0 truncate:0 invalid_ecpm:0 win:4 nfl:0 size:1000 pml:800 uniq_id:1000#location:15 image:0 title:1 video:1 plan:14 account:0 truncate:0 invalid_ecpm:0 win:2 nfl:0 size:1000 pml:800 uniq_id:1000#location:16 image:0 title:3 video:0 plan:14 account:0 truncate:0 invalid_ecpm:0 win:8 nfl:0 size:1000 pml:800 uniq_id:1000

@@ -1,0 +1,52 @@
+关于CVR模型的训练过程的理解
+  首先作用目标对象数据是特征抽取好的libsvm格式数据，然后再将其转成Feature格式的数据，Feature定义的结构如下：
+case class Features(
+  features: Array[String],
+  weight: Double,
+  label: Int) {
+  override def toString: String = {
+    implicit val formats = DefaultFormats
+    Serialization.write(Map(
+      "features" -> features,
+      "weight" -> weight,
+      "label" -> label))
+  }
+}
+{"features":["15<ef_2","16@male","1@17744","2@119023","3@400513","4@1","5@19","79@664319","80@24","6@2","7@FOCUS2","8@1","9@1","10@a","11@0","12@4","14@17","18@370000","19@370800","20@222.132","72@1","74@iPhone_6s","75@29.1","201@119023,FOCUS2"],"weight":0.0,"label":0}
+
+然后，通过initialModel(rwaData, this.sparkContext.emptyRDD[String], featureConfig)这个函数来对已经Feature格式的特征数据进行处理：
+处理过程包括如下：  
+1.  通过flatmap来对每个rdd中的数据行的特征以及对应特征取值进行map得到一个新的RDD
+              格式为：203@343896,YX0101      
+203@390945,YX0605 
+3@390945,YX0602  
+2.  对每个（特征编号：特征值进行过滤，过滤过程有：
+A.出现次数小于minPV去掉.(通过map，reduce操作)
+            B.出现在conf中filter配置中的，不要
+            C.通过geoProb为阈值标准，来对这个feature的PV对进行是否保留（间接采样的意思）
+       
+3.  在完成以上过滤过程之后，将2.C之后得到的feature的PV对与2.B步骤之后且在历史模型特征集合中存在的特征进行外全连接，如果历史模型特征集合中存在有值，则将该pv对的value值
+赋予给这个最终PV对的value值。
+
+经过3操作之后，得到的是（特征编号：特征值，value）的key_value对,类型为RDD[string,double]
+
+以上这一步我理解为特征权值的初始化。
+
+在initmodel（）操作之后，接下来进入对（特征编号：特征值）这个PV对进行id化，通过zipwithIndex
+来实现，这样就得到了如下的格式：
+                 (202@T1467284926140,YX0106,1)
+(74@NX612J,2)
+(20@106.9,3)
+(19@371500,4)
+(201@136363,T1348649503389,5)
+(20@182.148,6)
+(20@123.152,7)
+(20@219.138,8)
+(20@111.164,9)
+(201@135846,T1348648756099,10)
+这样就完成了特征@特征值的id化。
+在完成了特征id化之后，通过trans函数来讲特征抽取的文件转化为以上特征id化之后的特征格式，然后加载训练参数，包括最大迭代次数，正则化，惩罚项等设置，之后开始训练，然后将训练的结果包括特征对应的参数和AUC分数输出文件。(这里有mpi的增量学习）
+     操作步骤对应代码如下：
+       
+
+

@@ -1,0 +1,5 @@
+'''启动kafka'''
+nohup ~/workspace/kafka_2.11-0.11.0.2/bin/kafka-server-start.sh -daemon ~/workspace/kafka_2.11-0.11.0.2/config/server.properties &
+
+'''在一台服务器上创建一个订阅者'''
+~/workspace/kafka_2.11-0.11.0.2/bin/kafka-console-consumer.sh --zookeeper 10.120.180.212:2181,10.120.180.213:2181,10.120.180.214:2181 --topic xxxxx --from-beginning

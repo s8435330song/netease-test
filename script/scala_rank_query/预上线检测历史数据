@@ -1,0 +1,71 @@
+==> logs_fullday_ps2_master_ratio/stdout.2019-02-28 <==
+-----  diff result ----
+    --- The rank diff ---
+    bid diff count: 57  cost_type diff count: 0 win price diff count: 10136091  ctr diff count: 71244   newAd diff count: 7189  ecpm diff count: 402    ecpm2 diff count: 52932 rank_ecpm diff count: 784361
+    bid diff ratio: 1.5148588E-6    cost_type diff ratio: 0.0   win price diff ratio: 0.26938152    ctr diff ratio: 0.0018934141    newAd diff ratio: 1.9105825E-4  ecpm diff ratio: 1.06837415E-5  ecpm2 diff ratio: 0.0014067458  rank_ecpm diff ratio: 0.020845547
+    --- The online show diff ---
+join show number: 9120628   join rate: 0.24243946
+online diff count: 875  diff rate: 9.5936375E-5
+    bid diff count: 875 cost_type diff count: 0 win price > bid diff count: 0
+    bid diff ration: 2.3254412E-5   cost_type diff ration: 0.0  win price > bid diff ration: 0.0
+    --- The offline show diff ---
+join show number: 8745872   join rate: 0.2324344
+offline diff count: 542 diff rate: 6.1972096E-5
+    bid diff count: 542 cost_type diff count: 0 win price > bid diff count: 0
+    bid diff ration: 1.4404447E-5   cost_type diff ration: 0.0  win price > bid diff ration: 0.0
+-----  diff result ----
+All process is finish !
+
+==> logs_fullday_ps2_master_ratio/stdout.2019-03-01 <==
+-----  diff result ----
+    --- The rank diff ---
+    bid diff count: 15  cost_type diff count: 0 win price diff count: 9993183   ctr diff count: 253598  newAd diff count: 8681  ecpm diff count: 567    ecpm2 diff count: 43160 rank_ecpm diff count: 349444
+    bid diff ratio: 4.086973E-7 cost_type diff ratio: 0.0   win price diff ratio: 0.2722791 ctr diff ratio: 0.0069096545    newAd diff ratio: 2.3652674E-4  ecpm diff ratio: 1.5448757E-5   ecpm2 diff ratio: 0.0011759583  rank_ecpm diff ratio: 0.009521121
+    --- The online show diff ---
+join show number: 8518383   join rate: 0.2321808
+online diff count: 161  diff rate: 1.89003E-5
+    bid diff count: 161 cost_type diff count: 0 win price > bid diff count: 0
+    bid diff ration: 4.3866844E-6   cost_type diff ration: 0.0  win price > bid diff ration: 0.0
+    --- The offline show diff ---
+join show number: 7787173   join rate: 0.2121731
+offline diff count: 147 diff rate: 1.8877197E-5
+    bid diff count: 147 cost_type diff count: 0 win price > bid diff count: 0
+    bid diff ration: 4.0052337E-6   cost_type diff ration: 0.0  win price > bid diff ration: 0.0
+-----  diff result ----
+All process is finish !
+
+==> logs_fullday_ps2_master_ratio/stdout.2019-03-02 <==
+-----  diff result ----
+    --- The rank diff ---
+    bid diff count: 30  cost_type diff count: 0 win price diff count: 10203508  ctr diff count: 50127   newAd diff count: 4722  ecpm diff count: 454    ecpm2 diff count: 50893 rank_ecpm diff count: 225936
+    bid diff ratio: 8.1962895E-7    cost_type diff ratio: 0.0   win price diff ratio: 0.27876967    ctr diff ratio: 0.001369518 newAd diff ratio: 1.290096E-ecpm diff ratio: 1.2403718E-5   ecpm2 diff ratio: 0.0013904459  rank_ecpm diff ratio: 0.0061727897
+    --- The online show diff ---
+join show number: 9008383   join rate: 0.24612267
+online diff count: 255  diff rate: 2.8306968E-5
+    bid diff count: 255 cost_type diff count: 0 win price > bid diff count: 0
+    bid diff ration: 6.9668463E-6   cost_type diff ration: 0.0  win price > bid diff ration: 0.0
+    --- The offline show diff ---
+join show number: 8699355   join rate: 0.23767477
+offline diff count: 253 diff rate: 2.9082616E-5
+    bid diff count: 253 cost_type diff count: 0 win price > bid diff count: 0
+    bid diff ration: 6.9122043E-6   cost_type diff ration: 0.0  win price > bid diff ration: 0.0
+-----  diff result ----
+All process is finish !
+
+==> logs_fullday_ps2_master_ratio/stdout.2019-03-03 <==
+-----  diff result ----
+    --- The rank diff ---
+    bid diff count: 10  cost_type diff count: 0 win price diff count: 11135420  ctr diff count: 35419   newAd diff count: 2 ecpm diff count: 323    ecpm2 diff count: 47125 rank_ecpm diff count: 173302
+    bid diff ratio: 2.894006E-7 cost_type diff ratio: 0.0   win price diff ratio: 0.32225972    ctr diff ratio: 0.001025028 newAd diff ratio: 5.788012E-ecpm diff ratio: 9.347639E-6    ecpm2 diff ratio: 0.0013638003  rank_ecpm diff ratio: 0.00501537
+    --- The online show diff ---
+join show number: 8751051   join rate: 0.25326014
+online diff count: 47   diff rate: 5.3707836E-6
+    bid diff count: 46  cost_type diff count: 0 win price > bid diff count: 1
+    bid diff ration: 1.3312427E-6   cost_type diff ration: 0.0  win price > bid diff ration: 2.894006E-8
+    --- The offline show diff ---
+join show number: 8709034   join rate: 0.25203997
+offline diff count: 43  diff rate: 4.9374016E-6
+    bid diff count: 41  cost_type diff count: 0 win price > bid diff count: 2
+    bid diff ration: 1.1865424E-6   cost_type diff ration: 0.0  win price > bid diff ration: 5.788012E-8
+-----  diff result ----
+All process is finish !

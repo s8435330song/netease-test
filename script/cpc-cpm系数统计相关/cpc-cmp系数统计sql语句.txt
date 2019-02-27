@@ -1,0 +1,52 @@
+ / 1339658.2993648003
+ / 1186588.2580461043
+ / 830070.7184743667
+ / 681553.2613498428
+ / 717224.7213415485
+ / 829512.6210290636
+ / 543661.3633990437
+ / 576299.2587784623
+ / 628985.5485079362
+100774.33868903366*7381.076104982119 / 596709.5424606223
+Time taken: 2470.665 seconds, Fetched: 10 row(s)
+
+==> cal_alpha_cpm_group <==
+Total MapReduce CPU Time Spent: 0 days 10 hours 30 minutes 26 seconds 600 msec
+OK
+1339658.2993648003
+1186588.2580461043
+830070.7184743667
+681553.2613498428
+717224.7213415485
+829512.6210290636
+543661.3633990437
+576299.2587784623
+628985.5485079362
+643266.8237758576
+
+699.1857691861953
+910.2019786024141
+1177.578632006991
+1377.2807868922948
+1269.119374148436
+1044.7610100390273
+1481.626260588048
+1425.3020792298726
+1290.5935852231803
+1246.541257285302
+
+nohup hive -e "select sum(ecpm)/count(*),dt  from gen.gen_yx_show_log_det_hour where dt >'2018-11-20' and cost_type = 0 group by dt order by dt " >cpm_g &
+
+nohup hive -e "select sum(ecpm)/count(*),position_id  from gen.gen_yx_show_log_det_hour where dt ='2018-11-26' and cost_type = 0 group by position_id  " >cpm_position &
+
+nohup hive -e "select sum(pay)/count(*),sum(ctr)/count(*),position_id  from gen.gen_yx_show_log_det_hour where dt ='2018-11-26' and cost_type = 1 group by position_id  " >cpc_position &
+
+nohup hive -e "select sum(ecpm)/count(*),site  from gen.gen_yx_show_log_det_hour where dt ='2018-11-26' and cost_type = 0 group by site  " >cpm_site &
+
+nohup hive -e "select sum(pay)/count(*),sum(ctr)/count(*),site  from gen.gen_yx_show_log_det_hour where dt ='2018-11-26' and cost_type = 1 group by site  " >cpc_site &
+
+nohup hive -e "select sum(ecpm)/count(*),category  from gen.gen_yx_show_log_det_hour where dt ='2018-11-26' and cost_type = 0 group by category  " >cpm_category &
+
+nohup hive -e "select sum(pay)/count(*),sum(ctr)/count(*),category  from gen.gen_yx_show_log_det_hour where dt ='2018-11-26' and cost_type = 1 group by category  " >cpc_category &
+
+nohup hive -e "select sum(ecpm)/count(*),dt  from gen.gen_yx_show_log_det_hour where dt >'2018-11-20' and cost_type = 0 group by dt order by dt " >cpm_g &
