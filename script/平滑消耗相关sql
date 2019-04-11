@@ -4,14 +4,121 @@ select sum(winprc),',',h  from gen.gen_yx_cost_log_det_hour where adplan_id  = "
 
 select sum(winprc),',',h  from gen.gen_yx_cost_log_det_hour where adplan_id  = "159444" and dt = "2019-01-05"  group by h order by h;
 
-nohup hive -e "select * from (select h,substring(split(request_tm,':')[1],1,1) as m ,sum(winprc)  from gen.gen_yx_cost_log_det_hour where adplan_id  = '159444' and dt = '2019-01-05'  group by h,substring(split(request_tm,':')[1],1,1) ) a order by h,m;" > 159444_05 &
-nohup hive -e "select * from (select h,substring(split(request_tm,':')[1],1,1) as m ,sum(winprc)  from gen.gen_yx_cost_log_det_hour where adplan_id  = '159444' and dt = '2 019-01-06'  group by h,substring(split(request_tm,':')[1],1,1)) a order by h,m;" > 159444_06 &
-nohup hive -e "select * from (select h,substring(split(request_tm,':')[1],1,1) as m ,sum(winprc)  from gen.gen_yx_cost_log_det_hour where adplan_id  = '156088' and dt = '2019-01-06'  group by h,substring(split(request_tm,':')[1],1,1)) a  order by h,m;" > 156088_06 &
-nohup hive -e "select * from (select h,substring(split(request_tm,':')[1],1,1) as m ,sum(winprc)  from gen.gen_yx_cost_log_det_hour where adplan_id  = '156088' and dt = '2019-01-05'  group by h,substring(split(request_tm,':')[1],1,1) ) a order by h,m;" > 156088_05 &
+//总planid，无超投消耗是多少
+某一天：nohup hive -e "select * from (select adplan_id,concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) as m ,sum(winprc)/100000  from gen.gen_yx_cost_log_det_hour where adplan_id  in ('163180','185198','185343','186288','187080','189216','189849','97621') and status = 0 and dt = '2019-03-10'  group by adplan_id,concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) ) a order by adplan_id,m;" > over_cost_in_2019-03-10 &
+
+所有天：nohup hive -e "select * from (select dt,adplan_id,concat_ws('_',substring(dt,9),concat_ws('#',h,substring(split(request_tm,':')[1],1,1)))  as m ,sum(winprc)/100000  from gen.gen_yx_cost_log_det_hour where adplan_id  in (189442, 56852, 187451, 43585, 178811, 190532, 185270, 148560, 184925, 189543, 153536, 163180, 189672, 187547, 186022, 187080, 190505, 187130, 5890, 187159, 189216, 189219, 189734, 186698, 168812, 185198, 189325, 189840, 189844, 189845, 189848, 189849, 164269, 186288, 175542, 186307, 189385, 183031, 97621, 190462, 185343) and status = 0 and dt >= '2019-03-05' and dt <= '2019-03-11'  group by dt,adplan_id,concat_ws('_',substring(dt,9),concat_ws('#',h,substring(split(request_tm,':')[1],1,1))) ) a order by dt,adplan_id,m;" > allcost_0305_0311 &
+//单个planid，无超投,app,topnews,location=20 消耗是多少
+nohup hive -e "select * from (select concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) as m ,sum(winprc)/100000  from gen.gen_yx_cost_log_det_hour where adplan_id  = '189543' and status = 0 and site =1 and category = "FOCUS2" and location = 20 and dt = '2019-03-05'  group by concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) ) a order by m;" > 189543_2019-03-05 &
+//一系列planid，无超投 消耗是多少
+nohup hive -e "select * from (select adplan_id,concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) as m ,sum(winprc)/100000  from gen.gen_yx_cost_log_det_hour where adplan_id  in (187547,185343,187080,189844,189848,184925,189849,187130,189840,190532)  and status = 0 and dt = '2019-03-06'  group by adplan_id,concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) ) a order by adplan_id,m;" > all_2019-03-06 &
+//一系列planid，无超投,app,topnews,location=20 消耗是多少
+nohup hive -e "select * from (select adplan_id,concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) as m ,sum(winprc)/100000  from gen.gen_yx_cost_log_det_hour where adplan_id  in (189543,187451,187159,43585)  and status = 0 and site =1 and category = 'FOCUS2' and location = 20 and dt = '2019-03-06'  group by adplan_id,concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) ) a order by adplan_id,m;" > all_2019-03-06 &
+nohup hive -e "select * from (select concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) as m ,sum(winprc)/100000  from gen.gen_yx_cost_log_det_hour where adplan_id  = '160938' and dt = '2019-01-12'  group by concat_ws('#',h,substring(split(request_tm,':')[1],1,1)) ) a order by m;" > 160938_12 &
+//确认有cost是否一定有ptr
+select
+    distinct adplan_id
+from
+    gen.gen_yx_cost_log_det_hour 
+where
+    adplan_id  in (182403,187550,189139,186369,187771,189573,188998,189470,177564,189039,186278,187551,187646,185696,184925,185624,189817,186289,182221,189432,189846,185569,188134,189867,187547,186575,186026,56852,186698,185919) and dt = '2019-02-27' and h > 11
+//确认停止投放后，8点的消耗rid是啥时候的
+select 
+
+//选择41个planid中超投过得planid
+
+select
+    dt,collect_set(adplan_id)
+from
+    (select
+        distinct dt,adplan_id
+    from
+        gen.gen_yx_cost_log_det_hour 
+    where
+        adplan_id  in (189442, 56852, 187451, 43585, 178811, 190532, 185270, 148560, 184925, 189543, 153536, 163180, 189672, 187547, 186022, 187080, 190505, 187130, 5890, 187159, 189216, 189219, 189734, 186698, 168812, 185198, 189325, 189840, 189844, 189845, 189848, 189849, 164269, 186288, 175542, 186307, 189385, 183031, 97621, 190462, 185343) and status =3 and dt >= '2019-03-06' and dt <= '2019-03-10')a
+group by dt
+order by dt
 
 
+select 
+adplan_id,cost
+from
+(
+select 
+adplan_id,sum(winprc) as cost
+from
+gen.gen_yx_cost_log_det_hour
+where dt >= '2019-02-25' and dt <= '2019-02-28'
+group by adplan_id
+)a
+order by cost desc
+limit 150;
+
+
+select 
+sum(winprc) as cost
+from
+gen.gen_yx_cost_log_det_hour
+where dt >= '2019-02-25' and dt <= '2019-02-28';
+
+//上线planid的消耗占比
+select cost_p/cost
+from 
+(
+select 
+sum(winprc) as cost_p, 1 as t1
+from
+gen.gen_yx_cost_log_det_hour
+where adplan_id  in (189442, 56852, 187451, 43585, 178811, 190532, 185270, 148560, 184925, 189543, 153536, 163180, 189672, 187547, 186022, 187080, 190505, 187130, 5890, 187159, 189216, 189219, 189734, 186698, 168812, 185198, 189325, 189840, 189844, 189845, 189848, 189849, 164269, 186288, 175542, 186307, 189385, 183031, 97621, 190462, 185343) and dt >= '2019-02-25' and dt <= '2019-02-28'
+) a
+left join
+(
+select 
+sum(winprc) as cost,1 as t2
+from
+gen.gen_yx_cost_log_det_hour
+where dt >= '2019-02-25' and dt <= '2019-02-28'
+) b
+on t1=t2;
+
+//上线planid的曝光占比
+select show_p/show
+from 
+(
+select 
+count(distinct request_id,site,location) as show_p, 1 as t1
+from
+gen.gen_yx_show_log_det_hour
+where adplan_id  in (189442, 56852, 187451, 43585, 178811, 190532, 185270, 148560, 184925, 189543, 153536, 163180, 189672, 187547, 186022, 187080, 190505, 187130, 5890, 187159, 189216, 189219, 189734, 186698, 168812, 185198, 189325, 189840, 189844, 189845, 189848, 189849, 164269, 186288, 175542, 186307, 189385, 183031, 97621, 190462, 185343) and dt = '2019-02-28'
+) a
+left join
+(
+select 
+count(distinct request_id,site,location) as show,1 as t2
+from
+gen.gen_yx_show_log_det_hour
+where dt = '2019-02-28'
+) b
+on t1=t2;
+
+select 
+count(distinct adplan_id)
+from
+gen.gen_yx_cost_log_det_hour
+where dt <= '2019-02-25' and dt >= '2019-02-19';
 
 select sum(winprc),count(request_id),dt  from gen.gen_yx_cost_log_det_hour where adplan_id  in (46584,52279,56852,66530,72524,75920,80443,84351,109140,112507,115855,118737,119300,130946,140404,141469,146199,148435,148871,149362,151560,151718,156088,156553,157125,157954,159444,160938,161281,161596,42790,43585,46025,64973,69633,70908,88064,90735,94730,102113,106008,111354,118856,121505,122622,123831,124080,125661,137860,143387,146555,151089,153893,160177,160960,163172,164293,164330,165628,168419) and dt >= "2019-01-05" and dt < "2019-01-14"  group by dt ;
+
+
+select sum(winprc) from gen.gen_yx_cost_log_det_hour where adplan_id  in (46584,52279,56852,66530,72524,75920,80443,84351,109140,112507,115855,118737,119300,130946,140404,141469,146199,148435,148871,149362,151560,151718,156088,156553,157125,157954,159444,160938,161281,161596,42790,43585,46025,64973,69633,70908,88064,90735,94730,102113,106008,111354,118856,121505,122622,123831,124080,125661,137860,143387,146555,151089,153893,160177,160960,163172,164293,164330,165628,168419) and dt >= "2019-01-05" and dt < "2019-01-14";
+
+select sum(winprc) from gen.gen_yx_cost_log_det_hour where dt >= "2019-01-05" and dt < "2019-01-14";
+
+select 
+count(distinct adplan_id)
+from
+gen.gen_yx_cost_log_det_hour
+where dt >= "2019-01-05" and dt < "2019-01-14";
 
 //超投收入
 select 
@@ -173,3 +280,17 @@ on a.dt = b.dt
 //用户id曝光排序
 select * from (select u,count(u) as u_cnt from gen.gen_yx_show_log_det_hour where dt ='2019-01-05' and site = '2' and category = 'topnews' group by u )a order by u_cnt desc limit 100;
 
+
+SELECT
+      a.format_time,
+      avg(a.ptr)
+FROM
+(
+      SELECT
+            substring(from_unixtime(cast(substring(server_time, 1, 10) as bigint), 'HH:mm'),1,4) as format_time,
+            ptr
+      FROM
+            $queryTableName
+      ORDER BY substring(from_unixtime(cast(substring(server_time, 1, 10) as bigint), 'HH:mm'),1,4)
+)a
+group by a.format_time
