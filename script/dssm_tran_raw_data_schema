@@ -1,0 +1,26 @@
+
+    account_id:String ,19353,
+    adplan_id:String ,191261,
+    scheduling_id:String ,520302,
+    idea_id:String ,825811,
+    idea_type:String ,7,
+    cast_way:String ,1,
+    float_bid:String ,100000,
+    idea_create_time:String ,1551956891000,
+    idea_update_time:String ,1551956891000,
+    idea_name:String ,玩具B_GIF_1080×540,
+    direct_url:String ,,
+    status:String ,1,
+    platform:String ,1,2,4,5,8,9,10,11,16,19,21,20,
+    idea_desc:String ,null,
+    material_info: [{
+        material_type: 0,
+        url: https://pg-ad-b1.ws.126.net/yixiao/19353/6503ff62715a80d2774d4b415797c526.jpg,
+        material_size: 1080*540
+    }, {
+        material_type: 2,
+        url: https://pg-ad-b1.ws.126.net/yixiao/19353/a2a663ab9c08690bd812ab356b975d47.gif,
+        material_size: 1080*540
+    }],
+    idea_source: 联合国儿童基金会
+}
