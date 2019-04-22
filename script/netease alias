@@ -1,0 +1,14 @@
+cat icme_finish.wx |awk -F'\t' '{printf("%s %s %s %s",$1,$2,$4,$5)}'|head
+
+sed -i "s/b'\|'//g" finish3 
+
+
+alias hdu='hdfs dfs -du -h'
+alias hkill='yarn application -kill'
+alias hlog='yarn logs -applicationId'
+alias hls='hdfs dfs -ls'
+alias htext='hdfs dfs -text'
+alias l='ls -CF'
+alias la='ls -A'
+alias ll='ls -l'
+alias ls='ls --color=auto'

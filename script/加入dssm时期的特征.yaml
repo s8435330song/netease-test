@@ -1,0 +1,107 @@
+sta_author
+sta_title
+sta_v_cate1
+sta_m_cate1
+tf_idf_title
+sta_item_city
+sta_duration_time_bin
+sta_new_gender
+
+session_item
+session_author
+session_title
+session_v_cate1
+session_m_cate1
+session_new_gender
+session_duration_time_bin
+session_is_face
+
+session_item_fb
+session_author_fb
+item_city_fb
+v_cate1_fb
+m_cate1_fb
+
+'sta_item_city' , 'sta_duration_time_bin' , 'sta_new_gender' , 'session_new_gender' , 'session_duration_time_bin' , 'session_is_face' , 'item_city_fb'
+sta_item_city,sta_duration_time_bin,sta_new_gender,session_new_gender,session_duration_time_bin,session_is_face,item_city_fb
+
+sta_item_city
+sta_duration_time_bin
+sta_new_gender
+session_new_gender
+session_duration_time_bin
+session_is_face
+item_city_fb
+
+"sta_item_city" : "sta_item_city_eval","sta_duration_time_bin" : "sta_duration_time_bin_eval","sta_new_gender" : "sta_new_gender_eval","session_new_gender" : "session_new_gender_eval","session_duration_time_bin" : "session_duration_time_bin_eval","session_is_face" : "session_is_face_eval","item_city_fb" : "item_city_fb_eval",
+
+
+sta_item_city = np.reshape(sta_item_city, (len(sta_item_city),-1))
+sta_duration_time_bin = np.reshape(sta_duration_time_bin, (len(sta_duration_time_bin),-1))
+sta_new_gender = np.reshape(sta_new_gender, (len(sta_new_gender),-1))
+session_new_gender = np.reshape(session_new_gender, (len(session_new_gender),-1))
+session_duration_time_bin = np.reshape(session_duration_time_bin, (len(session_duration_time_bin),-1))
+session_is_face = np.reshape(session_is_face, (len(session_is_face),-1))
+item_city_fb = np.reshape(item_city_fb, (len(item_city_fb),-1))
+
+
+sta_item_city = run_values.results['sta_item_city']
+sta_duration_time_bin = run_values.results['sta_duration_time_bin']
+sta_new_gender = run_values.results['sta_new_gender']
+session_new_gender = run_values.results['session_new_gender']
+session_duration_time_bin = run_values.results['session_duration_time_bin']
+session_is_face = run_values.results['session_is_face']
+item_city_fb = run_values.results['item_city_fb']
+
+
+sta_item_city_t = tf.identity(data_iter[0]['sta_item_city'].values, name = "sta_item_city_eval")
+sta_duration_time_bin_t = tf.identity(data_iter[0]['sta_duration_time_bin'].values, name = "sta_duration_time_bin_eval")
+sta_new_gender_t = tf.identity(data_iter[0]['sta_new_gender'].values, name = "sta_new_gender_eval")
+session_new_gender_t = tf.identity(data_iter[0]['session_new_gender'].values, name = "session_new_gender_eval")
+session_duration_time_bin_t = tf.identity(data_iter[0]['session_duration_time_bin'].values, name = "session_duration_time_bin_eval")
+session_is_face_t = tf.identity(data_iter[0]['session_is_face'].values, name = "session_is_face_eval")
+item_city_fb_t = tf.identity(data_iter[0]['item_city_fb'].values, name = "item_city_fb_eval")
+
+
+
+
+1: clk
+2: item_id
+3: author_id
+4: item_city
+5: channel
+6: uid
+7: music_id
+8: device
+9: time
+10: duration_time
+11: title_feature
+12: gender
+13: beauty
+14: time_int
+15: time_comp
+16: is_face
+17: face_count
+18: new_gender
+19: gender0_count
+20: gender1_count
+21: duration_time_bin
+22: title_len
+23: sta_item_city
+24: sta_duration_time_bin
+25: sta_new_gender
+26: item_city_fb
+27: duration_time_bin_post_pv
+28: duration_time_bin_post_clk
+29: duration_time_bin_post_ctr
+30: session_item_city
+31: session_new_gender
+32: session_duration_time_bin
+33: session_is_face
+34: title_match
+35: title_match_degree
+36: item_city_match
+37: duration_time_bin_match
+38: new_gender_match
+40: user_vec
+50: item_vec
